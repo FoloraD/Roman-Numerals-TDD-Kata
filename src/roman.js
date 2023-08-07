@@ -17,21 +17,31 @@ M => 1000
 
 
 function numberToRoman(num) {
-    const romanNumerals = {
-        1: 'I',
-        4: 'IV',
+    const romanNumerals = [ 
+        'M', 'CM', 'D', 'CD',
+        'C', 'XC', 'L', 'XL',
+        'X', 'IX', 'V', 'IV',
+        'I'
+    ];
 
-    };
-       
-    let result = '';
-    for(let value in romanNumerals){
-        while (num >= value) {
-            result += romanNumerals[value];
-            num -= value;
-        }
+    const lookupValues = [
+        1000, 900, 500, 400,
+        100,  90,  50,  40,
+         10,   9,   5,   4,
+          1
+    ];
+
+    let result = ''; // final Roman numeral representation.
+    // initalization; condition; iteration
+    for(let i = 0; num; i++){  //
+   
+    while(num >= lookupValues[i]){  // checks if (num) is greater than or equal to the current lookup value at index i
+        num -= lookupValues[i];  // True => subtracts the lookup value from num & add to result string
+        result += romanNumerals[i];
     }
-    
+    }
     return result;
+    
 };
 
 module.exports = numberToRoman
